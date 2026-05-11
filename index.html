@@ -3,490 +3,801 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>NovaCiencia | Investigación STEM para Latinoamérica</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #120606;
+      color: #fff7f2;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(18, 6, 6, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #ffd7c7;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      opacity: 0.88;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: #ffb7a1;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
+      background:
+        radial-gradient(circle at top left, rgba(195, 50, 50, 0.42), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(255, 154, 111, 0.18), transparent 35%),
+        #120606;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      color: #ffd7c7;
+      background: rgba(255, 255, 255, 0.07);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      line-height: 0.95;
+      margin-bottom: 1.25rem;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      color: rgba(255, 247, 242, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.7rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      font-weight: 700;
+      background: #ff6f4f;
+      color: #240909;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #ff9279;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: #fff7f2;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .logo-card {
+      padding: 2rem;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+    }
+
+    .logo-circle {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, #ffad8f 0%, #b22d2d 48%, #3d0d0d 100%);
+      border: 3px solid rgba(255, 255, 255, 0.16);
+      font-size: 4rem;
+    }
+
+    .status-note,
+    .contact-note,
+    .notice {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .contact-note a {
+      text-decoration: underline;
+      color: #ffd7c7;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .section-intro {
+      max-width: 820px;
+      color: rgba(255, 247, 242, 0.86);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      padding: 1.35rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .card h3 {
+      color: #ffd7c7;
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+    }
+
+    .card p,
+    .card li {
+      color: rgba(255, 247, 242, 0.86);
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .timeline-date {
+      font-weight: 800;
+      color: #ffb7a1;
+    }
+
+    .prize-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .prize {
+      text-align: center;
+      padding: 1.6rem;
+      border-radius: 24px;
+      background: rgba(255, 111, 79, 0.13);
+      border: 1px solid rgba(255, 111, 79, 0.3);
+    }
+
+    .prize strong {
+      display: block;
+      font-size: 2rem;
+      color: #ffd7c7;
+      margin-bottom: 0.3rem;
+    }
+
+    .small-note {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .resource-list a {
+      display: block;
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      color: #ffd7c7;
+      font-weight: 700;
+    }
+
+    .faq {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      padding: 1.2rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .faq-item h3 {
+      color: #ffd7c7;
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 247, 242, 0.8);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .prize-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .logo-circle {
+        width: 170px;
+        height: 170px;
+        font-size: 3rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="hero">
-    <div class="hero-content">
-      <p class="badge">100% gratis • Para estudiantes de 13–18 años</p>
-      <h1>NovaCiencia</h1>
-      <p class="subtitle">
-        Un programa gratuito que conecta a estudiantes Latinoamericanos con mentoría de PhD students
-        afiliados a universidades top-ranked de EE. UU., investigación guiada, recursos académicos
-        y competencias con premios.
-      </p>
-
-      <div class="hero-buttons">
-        <button onclick="showPage('aplicar')" class="primary-btn">Aplicar al Programa</button>
-        <button onclick="showPage('mision')" class="secondary-btn">Conocer la Misión</button>
-      </div>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="brand">NovaCiencia</a>
+        <div class="nav-links">
+          <a href="#mision">Misión</a>
+          <a href="#programa">Programa</a>
+          <a href="#mentores">Mentores</a>
+          <a href="#aliados">Aliados</a>
+          <a href="#seguridad">Seguridad</a>
+          <a href="#recursos">Recursos</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <nav>
-    <button onclick="showPage('mision')">Misión</button>
-    <button onclick="showPage('aplicar')">Aplicar</button>
-    <button onclick="showPage('programa')">Programa</button>
-    <button onclick="showPage('temas')">Temas</button>
-    <button onclick="showPage('mentores')">Mentores</button>
-    <button onclick="showPage('proyectos')">Proyectos</button>
-    <button onclick="showPage('tutoriales')">Tutoriales</button>
-    <button onclick="showPage('seguridad')">Seguridad</button>
-    <button onclick="showPage('faq')">FAQ</button>
-  </nav>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="tag">Investigación STEM bilingüe • Talento sin límites</span>
 
-  <main class="container">
+          <h1>NovaCiencia</h1>
 
-    <!-- MISIÓN -->
-    <section id="mision" class="page active">
-      <div class="card">
-        <h2>Nuestra Misión</h2>
-        <p>
-          NovaCiencia busca abrir oportunidades de investigación para estudiantes Latinoamericanos
-          de bajos recursos que están interesados en ciencia, ingeniería, medicina, tecnología,
-          datos o problemas globales.
-        </p>
-        <p>
-          El programa conecta estudiantes con PhD students y mentores STEM afiliados a universidades
-          top-ranked de Estados Unidos. Los mentores ayudan a los participantes a transformar
-          preguntas reales sobre sus comunidades en proyectos de investigación con estructura,
-          retroalimentación y apoyo académico.
-        </p>
-        <p>
-          NovaCiencia es 100% gratuito. No hay cuotas, pagos ocultos ni costos de inscripción.
-          La meta es ofrecer a estudiantes con menos acceso académico una oportunidad parecida
-          a la que muchos estudiantes privilegiados reciben en Estados Unidos.
-        </p>
-      </div>
+          <p>
+            NovaCiencia es un programa bilingüe de mentoría en investigación STEM para estudiantes de secundaria,
+            especialmente estudiantes hispanohablantes, Latinos y de comunidades con menos acceso a oportunidades
+            académicas avanzadas.
+          </p>
 
-      <div class="grid-3">
-        <div class="mini-card">
-          <h3>Gratis</h3>
-          <p>Sin costo, sin cuotas ocultas y sin barreras económicas.</p>
+          <p>
+            Nuestro objetivo es ayudar a estudiantes a desarrollar preguntas de investigación, leer artículos científicos,
+            diseñar proyectos, recibir retroalimentación de mentores STEM y presentar sus ideas en una muestra final.
+          </p>
+
+          <p class="status-note">
+            <strong>Estado actual:</strong> NovaCiencia está preparando su primer piloto. Actualmente estamos
+            reclutando mentores, aliados comunitarios y estudiantes interesados antes del lanzamiento oficial.
+          </p>
+
+          <p class="contact-note">
+            Contacto oficial:
+            <a href="mailto:novaciencias@stem4latinx.org">novaciencias@stem4latinx.org</a>
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://forms.gle/qP3Z15SW1tk1y4t38" target="_blank" rel="noopener noreferrer">
+              Aplicar como mentor
+            </a>
+            <a class="btn secondary" href="mailto:novaciencias@stem4latinx.org?subject=Inter%C3%A9s%20en%20NovaCiencia">
+              Contactar a NovaCiencia
+            </a>
+          </div>
         </div>
 
-        <div class="mini-card">
-          <h3>Global</h3>
-          <p>Diseñado para estudiantes de distintos países de Latinoamérica.</p>
+        <div class="logo-card">
+          <div class="logo-circle">⚛</div>
+          <h2>NovaCiencia</h2>
+          <p>Investigación STEM para Latinoamérica</p>
+          <p class="small-note">Ciencia sin fronteras. Talento sin límites.</p>
         </div>
-
-        <div class="mini-card">
-          <h3>Práctico</h3>
-          <p>Los estudiantes terminan con un proyecto, presentación o póster final.</p>
-        </div>
-      </div>
-
-      <div class="card highlight">
-        <h2>¿Por qué unirse?</h2>
-        <p>
-          Participar en NovaCiencia puede ayudar a los estudiantes a fortalecer sus aplicaciones
-          universitarias al demostrar iniciativa, investigación, liderazgo, curiosidad intelectual
-          e impacto social.
-        </p>
-        <p>
-          Los participantes pueden recibir certificados de participación, reconocimientos por
-          completar proyectos y, cuando estén disponibles, retroalimentación o reconocimiento
-          académico de mentores afiliados a universidades altamente reconocidas en EE. UU.
-        </p>
       </div>
     </section>
 
-    <!-- APLICAR -->
-    <section id="aplicar" class="page">
-      <div class="card">
-        <h2>Aplicar al Programa</h2>
-        <p>
-          Completa esta aplicación inicial. Para el prototipo, esta información no se guarda
-          todavía; solo demuestra cómo funcionaría el proceso de inscripción.
+    <section id="mision">
+      <div class="container">
+        <h2 class="section-title">Nuestra misión</h2>
+        <p class="section-intro">
+          NovaCiencia busca reducir la brecha de acceso a investigación STEM al ofrecer mentoría, recursos
+          educativos y una comunidad académica para estudiantes que desean explorar ciencia, medicina,
+          ingeniería, tecnología y salud pública.
         </p>
 
-        <form id="applicationForm">
-          <label>Nombre completo</label>
-          <input type="text" id="name" placeholder="Ejemplo: Ana Martínez" required />
+        <div class="cards">
+          <div class="card">
+            <h3>Acceso</h3>
+            <p>
+              Queremos que más estudiantes puedan aprender cómo se construye un proyecto de investigación,
+              incluso si su escuela no ofrece laboratorios avanzados o programas especiales.
+            </p>
+          </div>
 
-          <label>Edad</label>
-          <input type="number" id="age" placeholder="13-18" required />
+          <div class="card">
+            <h3>Mentoría</h3>
+            <p>
+              Buscamos conectar estudiantes con mentores STEM, incluyendo estudiantes de posgrado,
+              investigadores, profesionales y universitarios avanzados afiliados a universidades e instituciones reconocidas.
+            </p>
+          </div>
 
-          <label>País</label>
-          <input type="text" id="country" placeholder="Ejemplo: México, Perú, Colombia..." required />
-
-          <label>Área de interés</label>
-          <select id="interest" required>
-            <option value="">Selecciona una opción</option>
-            <option>Medicina y salud pública</option>
-            <option>Ingeniería</option>
-            <option>Ciencia de datos o inteligencia artificial</option>
-            <option>Medio ambiente y cambio climático</option>
-            <option>Educación o problemas sociales</option>
-            <option>Otro</option>
-          </select>
-
-          <label>¿Qué problema te gustaría investigar?</label>
-          <textarea id="researchIdea" placeholder="Escribe una idea breve..." required></textarea>
-
-          <label>¿Por qué quieres unirte?</label>
-          <textarea id="whyJoin" placeholder="Cuéntanos tu motivación..." required></textarea>
-
-          <button type="submit" class="primary-btn full-width">Enviar Aplicación</button>
-        </form>
-
-        <p id="applicationMessage" class="message"></p>
+          <div class="card">
+            <h3>Comunidad bilingüe</h3>
+            <p>
+              NovaCiencia apoya a estudiantes en español e inglés para que el idioma no sea una barrera
+              para explorar ciencia, investigación y oportunidades académicas.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- PROGRAMA -->
-    <section id="programa" class="page">
-      <div class="card">
-        <h2>Programa de Investigación: 12 Semanas</h2>
-        <p>
-          El programa funciona como una temporada de investigación. Los estudiantes aprenden
-          habilidades, trabajan en un proyecto y reciben retroalimentación de mentores.
+    <section id="programa">
+      <div class="container">
+        <h2 class="section-title">Programa piloto</h2>
+        <p class="section-intro">
+          El primer piloto de NovaCiencia será pequeño, organizado y flexible. La meta inicial es trabajar con
+          un grupo manejable de estudiantes y mentores para probar el modelo antes de expandirlo.
         </p>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Fase</th>
-              <th>Semanas</th>
-              <th>Objetivo</th>
-            </tr>
-          </thead>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Fase 1</div>
+            <div>
+              <h3>Reclutamiento</h3>
+              <p>
+                Reclutamiento de mentores, aliados, estudiantes interesados y asesores adultos para apoyar el piloto.
+              </p>
+            </div>
+          </div>
 
-          <tbody>
-            <tr>
-              <td>Cimientos</td>
-              <td>1–3</td>
-              <td>Crear una pregunta de investigación, leer estudios y aprender métodos básicos.</td>
-            </tr>
+          <div class="timeline-item">
+            <div class="timeline-date">Fase 2</div>
+            <div>
+              <h3>Talleres iniciales</h3>
+              <p>
+                Sesiones sobre cómo crear una pregunta de investigación, leer artículos científicos, usar fuentes confiables
+                y convertir una idea en un proyecto.
+              </p>
+            </div>
+          </div>
 
-            <tr>
-              <td>Diseño</td>
-              <td>4–6</td>
-              <td>Elegir datos, diseñar un experimento o crear un plan de investigación.</td>
-            </tr>
+          <div class="timeline-item">
+            <div class="timeline-date">Fase 3</div>
+            <div>
+              <h3>Desarrollo del proyecto</h3>
+              <p>
+                Los estudiantes desarrollan una propuesta, reciben retroalimentación y preparan una presentación final.
+              </p>
+            </div>
+          </div>
 
-            <tr>
-              <td>Ejecución</td>
-              <td>7–10</td>
-              <td>Analizar datos, construir prototipos, escribir resultados y recibir mentoría.</td>
-            </tr>
+          <div class="timeline-item">
+            <div class="timeline-date">Fase 4</div>
+            <div>
+              <h3>Muestra final</h3>
+              <p>
+                Los participantes presentan sus proyectos y reciben reconocimiento por su esfuerzo, creatividad
+                y crecimiento académico.
+              </p>
+            </div>
+          </div>
+        </div>
 
-            <tr>
-              <td>Presentación</td>
-              <td>11–12</td>
-              <td>Crear un póster, presentación final o demo del proyecto.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="notice">
+          <strong>Nota:</strong> NovaCiencia se encuentra en etapa de preparación. Las fechas oficiales,
+          cupos y aplicaciones estudiantiles serán anunciadas antes del lanzamiento del piloto.
+        </div>
       </div>
+    </section>
 
-      <div class="card prize-card">
-        <h2>Premios de la Competencia</h2>
-        <p>
-          Al final de la temporada, los estudiantes podrán presentar sus proyectos en una
-          competencia virtual. Los premios iniciales propuestos son:
+    <section id="premios">
+      <div class="container">
+        <h2 class="section-title">Reconocimiento y premios</h2>
+        <p class="section-intro">
+          NovaCiencia busca reconocer el esfuerzo de los estudiantes participantes a través de certificados,
+          reconocimiento público y premios propuestos para proyectos destacados.
         </p>
 
         <div class="prize-grid">
-          <div class="prize first">
-            <h3>🥇 1er Lugar</h3>
-            <p>$200 USD</p>
+          <div class="prize">
+            <strong>$200</strong>
+            <span>Primer lugar propuesto</span>
           </div>
 
-          <div class="prize second">
-            <h3>🥈 2do Lugar</h3>
-            <p>$120 USD</p>
+          <div class="prize">
+            <strong>$120</strong>
+            <span>Segundo lugar propuesto</span>
           </div>
 
-          <div class="prize third">
-            <h3>🥉 3er Lugar</h3>
-            <p>$100 USD</p>
+          <div class="prize">
+            <strong>$100</strong>
+            <span>Tercer lugar propuesto</span>
           </div>
         </div>
 
-        <p>
-          Todos los participantes que completen el programa recibirán un reconocimiento de
-          participación. Los proyectos destacados también podrán ser publicados en la página
-          de NovaCiencia como ejemplos de investigación estudiantil.
+        <p class="small-note">
+          *Premios propuestos, sujetos a fondos disponibles antes del lanzamiento oficial.
+          Los participantes también podrán recibir reconocimiento de participación.
         </p>
-      </div>
-
-      <div class="card highlight">
-        <h3>Ejemplo de taller</h3>
-        <p>
-          “Introducción a Python para investigación” — grupo de 20 estudiantes, 45 minutos,
-          preguntas al final y actividad práctica.
-        </p>
-
-        <button onclick="joinWorkshop()" class="secondary-btn">Ver disponibilidad de talleres</button>
       </div>
     </section>
 
-    <!-- TEMAS -->
-    <section id="temas" class="page">
-      <h2>Temas de Investigación</h2>
+    <section id="mentores">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">Mentores STEM</h2>
+          <p class="section-intro">
+            NovaCiencia está reclutando mentores STEM interesados en apoyar a estudiantes de secundaria
+            con investigación, orientación académica y desarrollo de proyectos.
+          </p>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>Salud Pública</h3>
-          <p>Enfermedades, acceso médico, nutrición, salud mental y prevención.</p>
-        </div>
+          <p>
+            Los mentores pueden participar de manera flexible como talleristas, revisores de ideas,
+            jueces de presentaciones o mentores de corto plazo.
+          </p>
 
-        <div class="card">
-          <h3>Ingeniería</h3>
-          <p>Dispositivos, energía, agua limpia, prototipos y soluciones comunitarias.</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://forms.gle/qP3Z15SW1tk1y4t38" target="_blank" rel="noopener noreferrer">
+              Aplicar como mentor
+            </a>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Ciencia de Datos</h3>
-          <p>Python, estadísticas, visualización de datos e inteligencia artificial ética.</p>
-        </div>
-
-        <div class="card">
-          <h3>Medio Ambiente</h3>
-          <p>Contaminación, clima, agricultura, biodiversidad y sostenibilidad.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MENTORES -->
-    <section id="mentores" class="page">
-      <div class="card">
-        <h2>Mentores</h2>
-        <p>
-          NovaCiencia busca reclutar PhD students, graduate students, investigadores y profesionales
-          STEM afiliados a universidades top-ranked de Estados Unidos, incluyendo instituciones
-          altamente reconocidas en investigación. Todos los mentores deberán ser verificados antes
-          de aparecer públicamente en la plataforma.
-        </p>
-
-        <p>
-          Para mantener honestidad y transparencia, NovaCiencia solo publicará el nombre,
-          universidad o afiliación de un mentor cuando esa persona haya aceptado participar y su
-          información haya sido confirmada.
-        </p>
-      </div>
-
-      <div class="mentor-card">
-        <h3>Mentor verificado próximamente</h3>
-        <p>Área: Ciencia de datos / salud pública</p>
-
-        <button onclick="joinWorkshop()" class="primary-btn">Unirse a llamada grupal</button>
-        <button onclick="reportIssue('Mentor')" class="danger-btn">Reportar problema</button>
-      </div>
-
-      <div class="card">
-        <h3>¿Quieres ser mentor?</h3>
-        <p>
-          Si eres estudiante universitario, PhD student, investigador o profesional STEM,
-          puedes apoyar talleres grupales, revisión de proyectos o mentoría académica.
-        </p>
-
-        <button onclick="showMentorForm()" class="secondary-btn">Aplicar como mentor</button>
-
-        <div id="mentorForm" class="hidden">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre" />
-
-          <label>Universidad o institución</label>
-          <input type="text" placeholder="Ejemplo: Universidad / laboratorio / organización" />
-
-          <label>Área de experiencia</label>
-          <input type="text" placeholder="Ejemplo: Biología, Python, ingeniería..." />
-
-          <button onclick="submitMentorForm()" class="primary-btn full-width">Enviar interés</button>
+          <h3>Roles posibles</h3>
+          <ul>
+            <li>Dar un taller corto de 30 minutos</li>
+            <li>Revisar ideas de investigación</li>
+            <li>Ayudar a estudiantes a formular preguntas científicas</li>
+            <li>Dar retroalimentación sobre presentaciones</li>
+            <li>Servir como juez en la muestra final</li>
+            <li>Apoyar como asesor del programa piloto</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- PROYECTOS -->
-    <section id="proyectos" class="page">
-      <h2>Proyectos de Estudiantes</h2>
+    <section id="aliados">
+      <div class="container">
+        <h2 class="section-title">Aliados y organizaciones</h2>
+        <p class="section-intro">
+          NovaCiencia busca colaborar con organizaciones STEM, capítulos universitarios, comunidades Latinas,
+          escuelas, bibliotecas y programas de acceso educativo.
+        </p>
 
-      <div class="card">
-        <h3>Ejemplos de proyectos futuros</h3>
+        <div class="cards">
+          <div class="card">
+            <h3>Compartir oportunidades</h3>
+            <p>
+              Las organizaciones pueden compartir nuestra aplicación de mentores o estudiantes con sus redes
+              educativas, universitarias o profesionales.
+            </p>
+          </div>
 
-        <ul>
-          <li>Analizar la calidad del aire cerca de escuelas usando datos públicos.</li>
-          <li>Investigar barreras de acceso a salud mental para adolescentes.</li>
-          <li>Crear un prototipo de filtro de agua de bajo costo.</li>
-          <li>Usar Python para visualizar datos de enfermedades o clima.</li>
-          <li>Investigar cómo la contaminación afecta comunidades de bajos recursos.</li>
-          <li>Diseñar una solución de ingeniería para ahorrar agua en escuelas.</li>
-        </ul>
+          <div class="card">
+            <h3>Conectar mentores</h3>
+            <p>
+              Buscamos estudiantes de posgrado, investigadores, profesionales STEM, universitarios avanzados
+              y personas interesadas en apoyar a estudiantes de secundaria.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Ofrecer talleres</h3>
+            <p>
+              Los aliados pueden apoyar con talleres sobre investigación, lectura de artículos científicos,
+              diseño de proyectos, STEM, medicina, ingeniería o universidad.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn" href="mailto:novaciencias@stem4latinx.org?subject=Colaboraci%C3%B3n%20con%20NovaCiencia">
+            Contactar para colaboración
+          </a>
+        </div>
       </div>
+    </section>
 
-      <div class="card highlight">
-        <h3>Meta del programa</h3>
-        <p>
-          Cada estudiante o equipo termina con un producto final: un póster, una presentación,
-          un mini paper, una visualización de datos o un prototipo.
+    <section id="seguridad">
+      <div class="container">
+        <h2 class="section-title">Seguridad y responsabilidad</h2>
+        <p class="section-intro">
+          Como NovaCiencia trabaja con estudiantes de secundaria, la seguridad, la transparencia y la comunicación
+          responsable son prioridades centrales del programa.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Comunicación oficial</h3>
+            <p>
+              La comunicación entre mentores y estudiantes deberá realizarse por canales oficiales de NovaCiencia
+              cuando sea posible.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Sesiones grupales</h3>
+            <p>
+              Para el primer piloto, las sesiones serán grupales y supervisadas cuando sea posible.
+              No se promoverán reuniones privadas no supervisadas entre adultos y menores.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Código de conducta</h3>
+            <p>
+              Los mentores y participantes deberán seguir reglas de respeto, profesionalismo, inclusión
+              y seguridad durante el programa.
+            </p>
+          </div>
+        </div>
+
+        <p class="notice">
+          NovaCiencia está desarrollando sus políticas de mentoría, permisos familiares y estructura de supervisión
+          antes del lanzamiento oficial del piloto.
         </p>
       </div>
     </section>
 
-    <!-- TUTORIALES -->
-    <section id="tutoriales" class="page">
-      <h2>Tutoriales y Recursos</h2>
-
-      <div class="card">
-        <h3>Recursos para aprender investigación, programación y datos</h3>
-        <p>
-          Esta biblioteca ayuda a estudiantes principiantes a aprender habilidades útiles
-          para crear proyectos de investigación: Python, estadística, lectura de estudios,
-          datos, salud pública, tecnología y comunicación científica.
-        </p>
-      </div>
-
-      <div class="resource-grid">
-        <div class="resource-card">
-          <h3>Khan Academy: Estadística y probabilidad</h3>
-          <p>Ideal para aprender datos, probabilidad, gráficas y conceptos básicos de análisis.</p>
-          <a href="https://es.khanacademy.org/math/statistics-probability" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Google Colab en español</h3>
-          <p>Permite usar Python en el navegador para analizar y visualizar datos.</p>
-          <a href="https://colab.research.google.com/?hl=es" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Kaggle Learn: Python</h3>
-          <p>Curso práctico para aprender Python aplicado a ciencia de datos.</p>
-          <a href="https://www.kaggle.com/learn/python" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Kaggle Learn</h3>
-          <p>Cursos gratuitos de Python, visualización de datos, machine learning y pandas.</p>
-          <a href="https://www.kaggle.com/learn" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Scratch en español</h3>
-          <p>Bueno para estudiantes principiantes que quieren aprender pensamiento computacional.</p>
-          <a href="https://scratch.mit.edu/studios/53168" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>MIT Technology Review en español</h3>
-          <p>Artículos sobre inteligencia artificial, biotecnología, clima y tecnología emergente.</p>
-          <a href="https://technologyreview.es/" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Stanford Medicine Children’s: Investigación e innovación</h3>
-          <p>Información en español sobre innovación médica e investigación pediátrica.</p>
-          <a href="https://www.stanfordchildrens.org/es/research-innovation.html" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Stanford ADRC: Educación en Investigación</h3>
-          <p>Ejemplo de formación investigativa en envejecimiento, Alzheimer y salud.</p>
-          <a href="https://med.stanford.edu/adrc/rec-sp.html" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Yale Ciencia Initiative</h3>
-          <p>Iniciativa de Yale para expandir acceso a conocimiento científico y carreras STEM.</p>
-          <a href="https://ciencia.yale.edu/es/welcome" target="_blank">Abrir recurso</a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Harvard Gazette: Science & Tech</h3>
-          <p>Noticias y estudios de ciencia, salud y tecnología desde Harvard.</p>
-          <a href="https://news.harvard.edu/gazette/section/science-technology/" target="_blank">Abrir recurso</a>
-        </div>
-      </div>
-
-      <div class="card highlight">
-        <h3>Investigaciones destacadas de universidades reconocidas</h3>
-        <p>
-          Estos recursos no significan que NovaCiencia esté oficialmente afiliada con esas
-          universidades. Son ejemplos de investigación real que los estudiantes pueden leer
-          para aprender cómo se comunica la ciencia.
+    <section id="recursos">
+      <div class="container">
+        <h2 class="section-title">Recursos de aprendizaje</h2>
+        <p class="section-intro">
+          NovaCiencia quiere ayudar a estudiantes a empezar incluso si todavía no tienen experiencia formal
+          en investigación. Esta sección incluirá recursos para aprender sobre proyectos científicos, lectura de
+          artículos, escritura académica y presentación de ideas.
         </p>
 
-        <ul>
-          <li>Harvard Gazette — artículos de ciencia y tecnología de Harvard.</li>
-          <li>MIT Technology Review en español — tecnología emergente y sociedad.</li>
-          <li>Stanford Medicine Children’s — investigación e innovación médica en español.</li>
-          <li>Stanford ADRC — educación en investigación sobre Alzheimer y envejecimiento.</li>
-          <li>Yale Ciencia Initiative — ciencia, comunidad Latina y acceso STEM.</li>
-        </ul>
+        <div class="resource-list">
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">
+            Google Scholar — Buscar artículos científicos
+          </a>
+
+          <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">
+            PubMed — Investigación biomédica y de salud
+          </a>
+
+          <a href="https://www.khanacademy.org/science" target="_blank" rel="noopener noreferrer">
+            Khan Academy Science — Repaso de ciencias
+          </a>
+
+          <a href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">
+            Coursera — Cursos introductorios
+          </a>
+
+          <a href="https://www.edx.org/" target="_blank" rel="noopener noreferrer">
+            edX — Cursos de universidades
+          </a>
+
+          <a href="https://www.sciencebuddies.org/" target="_blank" rel="noopener noreferrer">
+            Science Buddies — Ideas de proyectos científicos
+          </a>
+
+          <a href="https://www.youtube.com/@crashcourse" target="_blank" rel="noopener noreferrer">
+            Crash Course — Videos educativos de ciencia
+          </a>
+
+          <a href="https://www.youtube.com/@AmoebaSisters" target="_blank" rel="noopener noreferrer">
+            Amoeba Sisters — Biología explicada visualmente
+          </a>
+
+          <a href="https://www.youtube.com/@kurzgesagt" target="_blank" rel="noopener noreferrer">
+            Kurzgesagt — Ciencia visual y temas complejos
+          </a>
+
+          <a href="https://www.youtube.com/@stem4latinx" target="_blank" rel="noopener noreferrer">
+            STEM4Latinx — Recursos STEM para estudiantes Latinos
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- SEGURIDAD -->
-    <section id="seguridad" class="page">
-      <div class="card safety">
-        <h2>Política de Seguridad</h2>
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Preguntas frecuentes</h2>
 
-        <p>
-          Como el programa conecta a menores de edad con mentores adultos, la seguridad es una
-          prioridad central. Todas las interacciones deben ocurrir dentro de canales oficiales
-          del programa.
-        </p>
+        <div class="faq">
+          <div class="faq-item">
+            <h3>¿NovaCiencia ya está aceptando estudiantes?</h3>
+            <p>
+              NovaCiencia está preparando su primer piloto. La aplicación estudiantil será compartida cuando
+              la estructura del programa, mentores y fechas estén listas.
+            </p>
+          </div>
 
-        <ul>
-          <li>No se permite contacto privado no supervisado entre mentores y estudiantes.</li>
-          <li>Las llamadas grupales pueden ser grabadas para seguridad y responsabilidad.</li>
-          <li>Los estudiantes pueden reportar contenido inapropiado, acoso o conducta insegura.</li>
-          <li>Los mentores deben aceptar un código de conducta antes de participar.</li>
-          <li>El contenido publicado será moderado para mantener un ambiente académico y respetuoso.</li>
-        </ul>
+          <div class="faq-item">
+            <h3>¿Quién puede ser mentor?</h3>
+            <p>
+              Estudiantes de posgrado, investigadores, profesionales STEM, estudiantes universitarios avanzados
+              y personas con experiencia académica o profesional en STEM pueden aplicar.
+            </p>
+          </div>
 
-        <button onclick="reportIssue('Plataforma')" class="danger-btn">Reportar incidente</button>
+          <div class="faq-item">
+            <h3>¿El programa será en español o inglés?</h3>
+            <p>
+              NovaCiencia busca ser bilingüe. Algunos recursos y talleres podrán estar en español, inglés
+              o ambos idiomas, dependiendo de los mentores y participantes.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>¿NovaCiencia garantiza premios o mentoría individual?</h3>
+            <p>
+              No todavía. Los premios son propuestos y dependen de fondos disponibles. La mentoría individual
+              dependerá del número de mentores confirmados y de la estructura final del piloto.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="page">
-      <div class="card">
-        <h2>Preguntas Frecuentes</h2>
-
-        <h3>¿Cuánto cuesta?</h3>
-        <p>El programa es 100% gratuito.</p>
-
-        <h3>¿Quién puede aplicar?</h3>
-        <p>
-          Estudiantes de 13 a 18 años interesados en investigación, ciencia, ingeniería,
-          medicina, tecnología o problemas globales.
+    <section id="contacto">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-intro">
+          Para preguntas, mentoría, colaboración o apoyo al programa piloto, puedes contactar a NovaCiencia
+          por correo electrónico.
         </p>
 
-        <h3>¿Necesito saber programar?</h3>
-        <p>No. El programa tendrá talleres básicos para principiantes.</p>
+        <div class="hero-actions">
+          <a class="btn" href="mailto:novaciencias@stem4latinx.org">
+            novaciencias@stem4latinx.org
+          </a>
 
-        <h3>¿Recibiré un certificado?</h3>
-        <p>
-          La meta es ofrecer certificados de participación y reconocimiento para proyectos destacados.
-        </p>
-
-        <h3>¿La competencia da dinero?</h3>
-        <p>
-          Los premios propuestos son $200 USD para 1er lugar, $120 USD para 2do lugar
-          y $100 USD para 3er lugar. Estos premios dependerán de fondos disponibles
-          cuando el programa sea lanzado oficialmente.
-        </p>
-
-        <h3>¿NovaCiencia está afiliado oficialmente con universidades?</h3>
-        <p>
-          No necesariamente. NovaCiencia busca trabajar con mentores afiliados a universidades
-          altamente reconocidas, pero una universidad solo será mencionada como afiliación oficial
-          si existe una colaboración confirmada.
-        </p>
+          <a class="btn secondary" href="https://forms.gle/qP3Z15SW1tk1y4t38" target="_blank" rel="noopener noreferrer">
+            Formulario de mentores
+          </a>
+        </div>
       </div>
     </section>
-
   </main>
 
   <footer>
-    <p>NovaCiencia © 2026 | Prototipo estudiantil</p>
+    <div class="container">
+      <p><strong>NovaCiencia</strong> — Investigación STEM para Latinoamérica</p>
+      <p>Contacto: novaciencias@stem4latinx.org</p>
+      <p class="small-note">© 2026 NovaCiencia. Programa piloto en desarrollo.</p>
+    </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
