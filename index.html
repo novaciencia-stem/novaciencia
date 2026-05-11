@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaCiencia | Investigación STEM para Latinoamérica</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="badge">100% gratis • Para estudiantes de 13–18 años</p>
+      <h1>NovaCiencia</h1>
+      <p class="subtitle">
+        Un programa gratuito que conecta a estudiantes Latinoamericanos con mentoría de PhD students
+        afiliados a universidades top-ranked de EE. UU., investigación guiada, recursos académicos
+        y competencias con premios.
+      </p>
+
+      <div class="hero-buttons">
+        <button onclick="showPage('aplicar')" class="primary-btn">Aplicar al Programa</button>
+        <button onclick="showPage('mision')" class="secondary-btn">Conocer la Misión</button>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <button onclick="showPage('mision')">Misión</button>
+    <button onclick="showPage('aplicar')">Aplicar</button>
+    <button onclick="showPage('programa')">Programa</button>
+    <button onclick="showPage('temas')">Temas</button>
+    <button onclick="showPage('mentores')">Mentores</button>
+    <button onclick="showPage('proyectos')">Proyectos</button>
+    <button onclick="showPage('tutoriales')">Tutoriales</button>
+    <button onclick="showPage('seguridad')">Seguridad</button>
+    <button onclick="showPage('faq')">FAQ</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- MISIÓN -->
+    <section id="mision" class="page active">
+      <div class="card">
+        <h2>Nuestra Misión</h2>
+        <p>
+          NovaCiencia busca abrir oportunidades de investigación para estudiantes Latinoamericanos
+          de bajos recursos que están interesados en ciencia, ingeniería, medicina, tecnología,
+          datos o problemas globales.
+        </p>
+        <p>
+          El programa conecta estudiantes con PhD students y mentores STEM afiliados a universidades
+          top-ranked de Estados Unidos. Los mentores ayudan a los participantes a transformar
+          preguntas reales sobre sus comunidades en proyectos de investigación con estructura,
+          retroalimentación y apoyo académico.
+        </p>
+        <p>
+          NovaCiencia es 100% gratuito. No hay cuotas, pagos ocultos ni costos de inscripción.
+          La meta es ofrecer a estudiantes con menos acceso académico una oportunidad parecida
+          a la que muchos estudiantes privilegiados reciben en Estados Unidos.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="mini-card">
+          <h3>Gratis</h3>
+          <p>Sin costo, sin cuotas ocultas y sin barreras económicas.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Global</h3>
+          <p>Diseñado para estudiantes de distintos países de Latinoamérica.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Práctico</h3>
+          <p>Los estudiantes terminan con un proyecto, presentación o póster final.</p>
+        </div>
+      </div>
+
+      <div class="card highlight">
+        <h2>¿Por qué unirse?</h2>
+        <p>
+          Participar en NovaCiencia puede ayudar a los estudiantes a fortalecer sus aplicaciones
+          universitarias al demostrar iniciativa, investigación, liderazgo, curiosidad intelectual
+          e impacto social.
+        </p>
+        <p>
+          Los participantes pueden recibir certificados de participación, reconocimientos por
+          completar proyectos y, cuando estén disponibles, retroalimentación o reconocimiento
+          académico de mentores afiliados a universidades altamente reconocidas en EE. UU.
+        </p>
+      </div>
+    </section>
+
+    <!-- APLICAR -->
+    <section id="aplicar" class="page">
+      <div class="card">
+        <h2>Aplicar al Programa</h2>
+        <p>
+          Completa esta aplicación inicial. Para el prototipo, esta información no se guarda
+          todavía; solo demuestra cómo funcionaría el proceso de inscripción.
+        </p>
+
+        <form id="applicationForm">
+          <label>Nombre completo</label>
+          <input type="text" id="name" placeholder="Ejemplo: Ana Martínez" required />
+
+          <label>Edad</label>
+          <input type="number" id="age" placeholder="13-18" required />
+
+          <label>País</label>
+          <input type="text" id="country" placeholder="Ejemplo: México, Perú, Colombia..." required />
+
+          <label>Área de interés</label>
+          <select id="interest" required>
+            <option value="">Selecciona una opción</option>
+            <option>Medicina y salud pública</option>
+            <option>Ingeniería</option>
+            <option>Ciencia de datos o inteligencia artificial</option>
+            <option>Medio ambiente y cambio climático</option>
+            <option>Educación o problemas sociales</option>
+            <option>Otro</option>
+          </select>
+
+          <label>¿Qué problema te gustaría investigar?</label>
+          <textarea id="researchIdea" placeholder="Escribe una idea breve..." required></textarea>
+
+          <label>¿Por qué quieres unirte?</label>
+          <textarea id="whyJoin" placeholder="Cuéntanos tu motivación..." required></textarea>
+
+          <button type="submit" class="primary-btn full-width">Enviar Aplicación</button>
+        </form>
+
+        <p id="applicationMessage" class="message"></p>
+      </div>
+    </section>
+
+    <!-- PROGRAMA -->
+    <section id="programa" class="page">
+      <div class="card">
+        <h2>Programa de Investigación: 12 Semanas</h2>
+        <p>
+          El programa funciona como una temporada de investigación. Los estudiantes aprenden
+          habilidades, trabajan en un proyecto y reciben retroalimentación de mentores.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Semanas</th>
+              <th>Objetivo</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Cimientos</td>
+              <td>1–3</td>
+              <td>Crear una pregunta de investigación, leer estudios y aprender métodos básicos.</td>
+            </tr>
+
+            <tr>
+              <td>Diseño</td>
+              <td>4–6</td>
+              <td>Elegir datos, diseñar un experimento o crear un plan de investigación.</td>
+            </tr>
+
+            <tr>
+              <td>Ejecución</td>
+              <td>7–10</td>
+              <td>Analizar datos, construir prototipos, escribir resultados y recibir mentoría.</td>
+            </tr>
+
+            <tr>
+              <td>Presentación</td>
+              <td>11–12</td>
+              <td>Crear un póster, presentación final o demo del proyecto.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card prize-card">
+        <h2>Premios de la Competencia</h2>
+        <p>
+          Al final de la temporada, los estudiantes podrán presentar sus proyectos en una
+          competencia virtual. Los premios iniciales propuestos son:
+        </p>
+
+        <div class="prize-grid">
+          <div class="prize first">
+            <h3>🥇 1er Lugar</h3>
+            <p>$200 USD</p>
+          </div>
+
+          <div class="prize second">
+            <h3>🥈 2do Lugar</h3>
+            <p>$120 USD</p>
+          </div>
+
+          <div class="prize third">
+            <h3>🥉 3er Lugar</h3>
+            <p>$100 USD</p>
+          </div>
+        </div>
+
+        <p>
+          Todos los participantes que completen el programa recibirán un reconocimiento de
+          participación. Los proyectos destacados también podrán ser publicados en la página
+          de NovaCiencia como ejemplos de investigación estudiantil.
+        </p>
+      </div>
+
+      <div class="card highlight">
+        <h3>Ejemplo de taller</h3>
+        <p>
+          “Introducción a Python para investigación” — grupo de 20 estudiantes, 45 minutos,
+          preguntas al final y actividad práctica.
+        </p>
+
+        <button onclick="joinWorkshop()" class="secondary-btn">Ver disponibilidad de talleres</button>
+      </div>
+    </section>
+
+    <!-- TEMAS -->
+    <section id="temas" class="page">
+      <h2>Temas de Investigación</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Salud Pública</h3>
+          <p>Enfermedades, acceso médico, nutrición, salud mental y prevención.</p>
+        </div>
+
+        <div class="card">
+          <h3>Ingeniería</h3>
+          <p>Dispositivos, energía, agua limpia, prototipos y soluciones comunitarias.</p>
+        </div>
+
+        <div class="card">
+          <h3>Ciencia de Datos</h3>
+          <p>Python, estadísticas, visualización de datos e inteligencia artificial ética.</p>
+        </div>
+
+        <div class="card">
+          <h3>Medio Ambiente</h3>
+          <p>Contaminación, clima, agricultura, biodiversidad y sostenibilidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTORES -->
+    <section id="mentores" class="page">
+      <div class="card">
+        <h2>Mentores</h2>
+        <p>
+          NovaCiencia busca reclutar PhD students, graduate students, investigadores y profesionales
+          STEM afiliados a universidades top-ranked de Estados Unidos, incluyendo instituciones
+          altamente reconocidas en investigación. Todos los mentores deberán ser verificados antes
+          de aparecer públicamente en la plataforma.
+        </p>
+
+        <p>
+          Para mantener honestidad y transparencia, NovaCiencia solo publicará el nombre,
+          universidad o afiliación de un mentor cuando esa persona haya aceptado participar y su
+          información haya sido confirmada.
+        </p>
+      </div>
+
+      <div class="mentor-card">
+        <h3>Mentor verificado próximamente</h3>
+        <p>Área: Ciencia de datos / salud pública</p>
+
+        <button onclick="joinWorkshop()" class="primary-btn">Unirse a llamada grupal</button>
+        <button onclick="reportIssue('Mentor')" class="danger-btn">Reportar problema</button>
+      </div>
+
+      <div class="card">
+        <h3>¿Quieres ser mentor?</h3>
+        <p>
+          Si eres estudiante universitario, PhD student, investigador o profesional STEM,
+          puedes apoyar talleres grupales, revisión de proyectos o mentoría académica.
+        </p>
+
+        <button onclick="showMentorForm()" class="secondary-btn">Aplicar como mentor</button>
+
+        <div id="mentorForm" class="hidden">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre" />
+
+          <label>Universidad o institución</label>
+          <input type="text" placeholder="Ejemplo: Universidad / laboratorio / organización" />
+
+          <label>Área de experiencia</label>
+          <input type="text" placeholder="Ejemplo: Biología, Python, ingeniería..." />
+
+          <button onclick="submitMentorForm()" class="primary-btn full-width">Enviar interés</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="page">
+      <h2>Proyectos de Estudiantes</h2>
+
+      <div class="card">
+        <h3>Ejemplos de proyectos futuros</h3>
+
+        <ul>
+          <li>Analizar la calidad del aire cerca de escuelas usando datos públicos.</li>
+          <li>Investigar barreras de acceso a salud mental para adolescentes.</li>
+          <li>Crear un prototipo de filtro de agua de bajo costo.</li>
+          <li>Usar Python para visualizar datos de enfermedades o clima.</li>
+          <li>Investigar cómo la contaminación afecta comunidades de bajos recursos.</li>
+          <li>Diseñar una solución de ingeniería para ahorrar agua en escuelas.</li>
+        </ul>
+      </div>
+
+      <div class="card highlight">
+        <h3>Meta del programa</h3>
+        <p>
+          Cada estudiante o equipo termina con un producto final: un póster, una presentación,
+          un mini paper, una visualización de datos o un prototipo.
+        </p>
+      </div>
+    </section>
+
+    <!-- TUTORIALES -->
+    <section id="tutoriales" class="page">
+      <h2>Tutoriales y Recursos</h2>
+
+      <div class="card">
+        <h3>Recursos para aprender investigación, programación y datos</h3>
+        <p>
+          Esta biblioteca ayuda a estudiantes principiantes a aprender habilidades útiles
+          para crear proyectos de investigación: Python, estadística, lectura de estudios,
+          datos, salud pública, tecnología y comunicación científica.
+        </p>
+      </div>
+
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h3>Khan Academy: Estadística y probabilidad</h3>
+          <p>Ideal para aprender datos, probabilidad, gráficas y conceptos básicos de análisis.</p>
+          <a href="https://es.khanacademy.org/math/statistics-probability" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Google Colab en español</h3>
+          <p>Permite usar Python en el navegador para analizar y visualizar datos.</p>
+          <a href="https://colab.research.google.com/?hl=es" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Kaggle Learn: Python</h3>
+          <p>Curso práctico para aprender Python aplicado a ciencia de datos.</p>
+          <a href="https://www.kaggle.com/learn/python" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Kaggle Learn</h3>
+          <p>Cursos gratuitos de Python, visualización de datos, machine learning y pandas.</p>
+          <a href="https://www.kaggle.com/learn" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Scratch en español</h3>
+          <p>Bueno para estudiantes principiantes que quieren aprender pensamiento computacional.</p>
+          <a href="https://scratch.mit.edu/studios/53168" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>MIT Technology Review en español</h3>
+          <p>Artículos sobre inteligencia artificial, biotecnología, clima y tecnología emergente.</p>
+          <a href="https://technologyreview.es/" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Stanford Medicine Children’s: Investigación e innovación</h3>
+          <p>Información en español sobre innovación médica e investigación pediátrica.</p>
+          <a href="https://www.stanfordchildrens.org/es/research-innovation.html" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Stanford ADRC: Educación en Investigación</h3>
+          <p>Ejemplo de formación investigativa en envejecimiento, Alzheimer y salud.</p>
+          <a href="https://med.stanford.edu/adrc/rec-sp.html" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Yale Ciencia Initiative</h3>
+          <p>Iniciativa de Yale para expandir acceso a conocimiento científico y carreras STEM.</p>
+          <a href="https://ciencia.yale.edu/es/welcome" target="_blank">Abrir recurso</a>
+        </div>
+
+        <div class="resource-card">
+          <h3>Harvard Gazette: Science & Tech</h3>
+          <p>Noticias y estudios de ciencia, salud y tecnología desde Harvard.</p>
+          <a href="https://news.harvard.edu/gazette/section/science-technology/" target="_blank">Abrir recurso</a>
+        </div>
+      </div>
+
+      <div class="card highlight">
+        <h3>Investigaciones destacadas de universidades reconocidas</h3>
+        <p>
+          Estos recursos no significan que NovaCiencia esté oficialmente afiliada con esas
+          universidades. Son ejemplos de investigación real que los estudiantes pueden leer
+          para aprender cómo se comunica la ciencia.
+        </p>
+
+        <ul>
+          <li>Harvard Gazette — artículos de ciencia y tecnología de Harvard.</li>
+          <li>MIT Technology Review en español — tecnología emergente y sociedad.</li>
+          <li>Stanford Medicine Children’s — investigación e innovación médica en español.</li>
+          <li>Stanford ADRC — educación en investigación sobre Alzheimer y envejecimiento.</li>
+          <li>Yale Ciencia Initiative — ciencia, comunidad Latina y acceso STEM.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEGURIDAD -->
+    <section id="seguridad" class="page">
+      <div class="card safety">
+        <h2>Política de Seguridad</h2>
+
+        <p>
+          Como el programa conecta a menores de edad con mentores adultos, la seguridad es una
+          prioridad central. Todas las interacciones deben ocurrir dentro de canales oficiales
+          del programa.
+        </p>
+
+        <ul>
+          <li>No se permite contacto privado no supervisado entre mentores y estudiantes.</li>
+          <li>Las llamadas grupales pueden ser grabadas para seguridad y responsabilidad.</li>
+          <li>Los estudiantes pueden reportar contenido inapropiado, acoso o conducta insegura.</li>
+          <li>Los mentores deben aceptar un código de conducta antes de participar.</li>
+          <li>El contenido publicado será moderado para mantener un ambiente académico y respetuoso.</li>
+        </ul>
+
+        <button onclick="reportIssue('Plataforma')" class="danger-btn">Reportar incidente</button>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="page">
+      <div class="card">
+        <h2>Preguntas Frecuentes</h2>
+
+        <h3>¿Cuánto cuesta?</h3>
+        <p>El programa es 100% gratuito.</p>
+
+        <h3>¿Quién puede aplicar?</h3>
+        <p>
+          Estudiantes de 13 a 18 años interesados en investigación, ciencia, ingeniería,
+          medicina, tecnología o problemas globales.
+        </p>
+
+        <h3>¿Necesito saber programar?</h3>
+        <p>No. El programa tendrá talleres básicos para principiantes.</p>
+
+        <h3>¿Recibiré un certificado?</h3>
+        <p>
+          La meta es ofrecer certificados de participación y reconocimiento para proyectos destacados.
+        </p>
+
+        <h3>¿La competencia da dinero?</h3>
+        <p>
+          Los premios propuestos son $200 USD para 1er lugar, $120 USD para 2do lugar
+          y $100 USD para 3er lugar. Estos premios dependerán de fondos disponibles
+          cuando el programa sea lanzado oficialmente.
+        </p>
+
+        <h3>¿NovaCiencia está afiliado oficialmente con universidades?</h3>
+        <p>
+          No necesariamente. NovaCiencia busca trabajar con mentores afiliados a universidades
+          altamente reconocidas, pero una universidad solo será mencionada como afiliación oficial
+          si existe una colaboración confirmada.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>NovaCiencia © 2026 | Prototipo estudiantil</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
